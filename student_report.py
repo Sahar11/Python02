@@ -4,7 +4,7 @@ class Student:
     self.age = age
     self.gender = gender
   
-  def student_grades(self, grade):
+  def get_grade(self, grade):
     self.grade =grade
     return grade
 
@@ -21,7 +21,11 @@ class Course:
     return False
   
   def get_average_grade(self):
-    self.students 
+     value=0
+     for student in self.students:
+        value += student.get_grade()
+      
+     return value / len(self.students)
 
 s1 = Student("Johnny", 19, 95)
 s2 = Student("Ben",20, 78)
@@ -30,3 +34,5 @@ s3 = Student("Kelly", 19, 70)
 course = Course("Science", 2)
 course.add_student(s1)
 course.add_student(s2)
+course.add_student(s3)
+print(course.get_average_grade())
